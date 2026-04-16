@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="喝神手作茶飲 Ha ShEN 完整菜單 — 原味茶、調茶、鮮奶茶、波霸系列，堅持手作好茶。">
+  <meta name="keywords" content="喝神,Ha ShEN,菜單,手作茶飲,波霸鮮奶茶,台中飲料">
+  <meta property="og:title" content="菜單 — 喝神手作茶飲 Ha ShEN">
+  <meta property="og:description" content="嚴選原料、用心調製，從原味茶到招牌鮮奶系列，每一杯都是手作的堅持。">
+  <meta property="og:type" content="website">
+  <title>菜單 — 喝神手作茶飲 Ha ShEN</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&family=Ma+Shan+Zheng&family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages.css">
+
+  <style>
+    /* ===== Menu Page Hero ===== */
+    .menu-hero {
+      position: relative;
+      height: 40vh;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg-dark);
+      overflow: hidden;
+    }
+
+    .menu-hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, #2C2420 0%, #3d2e24 40%, #4a3728 60%, #2C2420 100%);
+    }
+
+    .menu-hero-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(180deg, rgba(44,36,32,0.2) 0%, rgba(44,36,32,0.5) 100%);
+    }
+
+    .menu-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--color-text-inverse);
+    }
+
+    .menu-hero-content h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--color-text-inverse);
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+
+    .menu-hero-content .menu-hero-en {
+      font-family: var(--font-english);
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      opacity: 0.6;
+      text-transform: uppercase;
+    }
+
+    /* ===== Category Tabs ===== */
+    .menu-tabs-section {
+      padding: 40px clamp(24px, 5vw, 80px) 0;
+      background: var(--color-bg-primary);
+    }
+
+    .menu-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .menu-tab-btn {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 10px 22px;
+      border: 1.5px solid var(--color-bg-secondary);
+      border-radius: var(--radius-full);
+      background: var(--color-bg-card);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-smooth);
+      white-space: nowrap;
+    }
+
+    .menu-tab-btn:hover {
+      border-color: var(--color-brand-light);
+      color: var(--color-brand);
+    }
+
+    .menu-tab-btn.active {
+      background: var(--color-brand);
+      color: #fff;
+      border-color: var(--color-brand);
+    }
+
+    /* ===== Menu Grid ===== */
+    .menu-content-section {
+      padding: 40px clamp(24px, 5vw, 80px) clamp(60px, 10vw, 100px);
+      background: var(--color-bg-primary);
+    }
+
+    .menu-panel {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .menu-panel.active {
+      display: block;
+    }
+
+    .menu-panel-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .menu-panel-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      margin-bottom: 4px;
+    }
+
+    .menu-panel-header .menu-panel-en {
+      font-family: var(--font-english);
+      font-size: 0.8rem;
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .menu-card {
+      background: var(--color-bg-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all 0.4s var(--ease-smooth);
+    }
+
+    .menu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(44, 36, 32, 0.1);
+    }
+
+    .menu-card-image {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-tertiary);
+      font-size: 0.8rem;
+    }
+
+    .menu-card-info {
+      padding: 18px;
+      text-align: center;
+    }
+
+    .menu-card-name {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--color-text-primary);
+    }
+
+    .menu-card-name-en {
+      font-family: var(--font-english);
+      font-size: 0.75rem;
+      color: var(--color-text-tertiary);
+      margin-bottom: 8px;
+    }
+
+    .menu-card-price {
+      font-family: var(--font-english);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-brand);
+    }
+
+    /* ===== Menu Info Footer ===== */
+    .menu-info-section {
+      padding: 48px clamp(24px, 5vw, 80px) 60px;
+      background: var(--color-bg-secondary);
+    }
+
+    .menu-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto 32px;
+    }
+
+    .menu-info-card {
+      background: var(--color-bg-card);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .menu-info-card h4 {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-text-primary);
+    }
+
+    .menu-info-card p {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+    }
+
+    .menu-note {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+    }
+
+    .menu-note strong {
+      color: var(--color-brand);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .menu-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .menu-tabs {
+        gap: 8px;
+      }
+
+      .menu-tab-btn {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+      }
+
+      .menu-card-image {
+        height: 140px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .menu-card-info {
+        padding: 14px 12px;
+      }
+
+      .menu-card-name {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+  </head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar scrolled">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-calligraphy">喝神</span>
+      <span class="nav-logo-text">Ha ShEN</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="../index.html#philosophy" class="nav-link">品牌理念</a>
+      <a href="about.html" class="nav-link">品牌故事</a>
+      <a href="menu.html" class="nav-link active">菜單</a>
+      <a href="stores.html" class="nav-link">門市據點</a>
+      <a href="franchise.html" class="nav-link">加盟資訊</a>
+      <a href="order.html" class="nav-order-btn">立即點餐</a>
+    </div>
+
+    <button class="nav-toggle" aria-label="選單">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="menu-hero">
+    <div class="menu-hero-bg"></div>
+    <div class="menu-hero-overlay"></div>
+    <div class="menu-hero-content reveal">
+      <h1>菜單</h1>
+      <p class="menu-hero-en">Menu</p>
+    </div>
+  </section>
+
+  <!-- ========== CATEGORY TABS ========== -->
+  <div class="menu-tabs-section reveal">
+    <div class="menu-tabs">
+      <button class="menu-tab-btn active" data-tab="original">原味茶</button>
+      <button class="menu-tab-btn" data-tab="blended">調茶</button>
+      <button class="menu-tab-btn" data-tab="vinegar">果醋濃濃</button>
+      <button class="menu-tab-btn" data-tab="lemon">雷萌森森</button>
+      <button class="menu-tab-btn" data-tab="creamy">香濃奶精</button>
+      <button class="menu-tab-btn" data-tab="fresh-milk">招牌主恩鮮乳</button>
+      <button class="menu-tab-btn" data-tab="hidden">隱藏版</button>
+      <button class="menu-tab-btn" data-tab="boba">Q彈鮮奶茶</button>
+    </div>
+  </div>
+
+  <!-- ========== MENU PANELS ========== -->
+  <div class="menu-content-section">
+
+    <!-- 原味茶 Original Tea -->
+    <div class="menu-panel active" id="panel-original">
+      <div class="menu-panel-header reveal">
+        <h2>原味茶</h2>
+        <p class="menu-panel-en">Original Tea</p>
+      </div>
+      <div class="menu-grid stagger-children">
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#e8c9a0,#c4783c);">古早味紅茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">古早味紅茶</div>
+            <div class="menu-card-name-en">Classic Black Tea</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f0d5a8,#d4955a);">蜜香紅茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">蜜香紅茶</div>
+            <div class="menu-card-name-en">Honey Black Tea</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5e6c0,#c49a4a);">冬瓜茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">冬瓜茶</div>
+            <div class="menu-card-name-en">Winter Melon Tea</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#d5e8d0,#8cb87a);">四季春青茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">四季春青茶</div>
+            <div class="menu-card-name-en">Four Seasons Oolong</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#c8e6c0,#7aad6a);">花香玉綠</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">花香玉綠</div>
+            <div class="menu-card-name-en">Jasmine Green Tea</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#3d3028,#6b5040);">仙草甘茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">仙草甘茶</div>
+            <div class="menu-card-name-en">Herbal Jelly Tea</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 調茶 Blended Tea -->
+    <div class="menu-panel" id="panel-blended">
+      <div class="menu-panel-header reveal">
+        <h2>調茶</h2>
+        <p class="menu-panel-en">Blended Tea</p>
+      </div>
+      <div class="menu-grid stagger-children">
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#d5c8b0,#a08060);">文山青紅茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">文山青紅茶</div>
+            <div class="menu-card-name-en">Wenshan Oolong Black Tea</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5edd8,#d4b88a);">紅茶豆漿</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">紅茶豆漿</div>
+            <div class="menu-card-name-en">Black Tea Soy Milk</div>
+            <div class="menu-card-price">L $45 / XL $50</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5e8c0,#d4b06a);">冬瓜豆漿</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">冬瓜豆漿</div>
+            <div class="menu-card-name-en">Winter Melon Soy Milk</div>
+            <div class="menu-card-price">L $45 / XL $50</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#e8c9a0,#b08050);">冬瓜紅茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">冬瓜紅茶</div>
+            <div class="menu-card-name-en">Winter Melon Black Tea</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#d0e0c0,#90a870);">冬瓜青茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">冬瓜青茶</div>
+            <div class="menu-card-name-en">Winter Melon Oolong</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5e4c0,#e2c060);">冬瓜多多</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">冬瓜多多</div>
+            <div class="menu-card-name-en">Winter Melon Yakult</div>
+            <div class="menu-card-price">L $50 / XL $55</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#c8e0b8,#88b868);">青茶多多</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">青茶多多</div>
+            <div class="menu-card-name-en">Oolong Yakult</div>
+            <div class="menu-card-price">L $50 / XL $55</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#c0e8b0,#78b060);">綠茶多多</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">綠茶多多</div>
+            <div class="menu-card-name-en">Green Tea Yakult</div>
+            <div class="menu-card-price">L $50 / XL $55</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#4a3828,#7a5840);">仙草甘紅茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">仙草甘紅茶</div>
+            <div class="menu-card-name-en">Herbal Jelly Black Tea</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#5a4830,#8a6848);">仙草甘冬瓜</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">仙草甘冬瓜</div>
+            <div class="menu-card-name-en">Herbal Jelly Winter Melon</div>
+            <div class="menu-card-price">L $30 / XL $35</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 果醋濃濃 Fruit Vinegar -->
+    <div class="menu-panel" id="panel-vinegar">
+      <div class="menu-panel-header reveal">
+        <h2>果醋濃濃</h2>
+        <p class="menu-panel-en">Fruit Vinegar</p>
+      </div>
+      <div class="menu-grid stagger-children">
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5d0b0,#d4704a);">蘋果醋飲</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">蘋果醋飲</div>
+            <div class="menu-card-name-en">Apple Vinegar Drink</div>
+            <div class="menu-card-price">$45</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#e8a0a0,#c04060);">蔓越莓醋飲</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">蔓越莓醋飲</div>
+            <div class="menu-card-name-en">Cranberry Vinegar Drink</div>
+            <div class="menu-card-price">$45</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 雷萌森森 Lemon Series -->
+    <div class="menu-panel" id="panel-lemon">
+      <div class="menu-panel-header reveal">
+        <h2>雷萌森森</h2>
+        <p class="menu-panel-en">Lemon Series</p>
+      </div>
+      <div class="menu-grid stagger-children">
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f8e8a0,#d4a030);">檸檬紅茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">檸檬紅茶</div>
+            <div class="menu-card-name-en">Lemon Black Tea</div>
+            <div class="menu-card-price">L $45 / XL $50</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f8e0a0,#c4a040);">冬瓜檸檬</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">冬瓜檸檬</div>
+            <div class="menu-card-name-en">Winter Melon Lemon</div>
+            <div class="menu-card-price">L $45 / XL $50</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#d8e8a0,#a0b840);">檸檬青茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">檸檬青茶</div>
+            <div class="menu-card-name-en">Lemon Oolong Tea</div>
+            <div class="menu-card-price">L $45 / XL $50</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#c8e8a0,#88b840);">檸檬綠茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">檸檬綠茶</div>
+            <div class="menu-card-name-en">Lemon Green Tea</div>
+            <div class="menu-card-price">L $45 / XL $50</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 香濃奶精 Creamy Milk Tea -->
+    <div class="menu-panel" id="panel-creamy">
+      <div class="menu-panel-header reveal">
+        <h2>香濃奶精</h2>
+        <p class="menu-panel-en">Creamy Milk Tea</p>
+      </div>
+      <div class="menu-grid stagger-children">
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5e6d3,#d4a574);">香濃奶茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">香濃奶茶</div>
+            <div class="menu-card-name-en">Creamy Milk Tea</div>
+            <div class="menu-card-price">L $50 / XL $55</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#e8d5c0,#c49a6c);">波霸香濃奶茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">波霸香濃奶茶</div>
+            <div class="menu-card-name-en">Boba Creamy Milk Tea</div>
+            <div class="menu-card-price">L $50 / XL $55</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f0dcc0,#c4906c);">椰果香濃奶茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">椰果香濃奶茶</div>
+            <div class="menu-card-name-en">Coconut Jelly Creamy Milk Tea</div>
+            <div class="menu-card-price">L $50 / XL $55</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 招牌主恩鮮乳 Fresh Milk Series -->
+    <div class="menu-panel" id="panel-fresh-milk">
+      <div class="menu-panel-header reveal">
+        <h2>招牌主恩鮮乳</h2>
+        <p class="menu-panel-en">Fresh Milk Series</p>
+      </div>
+      <div class="menu-grid stagger-children">
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5e6d3,#c4783c);">紅茶拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">紅茶拿鐵</div>
+            <div class="menu-card-name-en">Black Tea Latte</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5eacc,#d4a86a);">冬瓜鮮奶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">冬瓜鮮奶</div>
+            <div class="menu-card-name-en">Winter Melon Fresh Milk</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#d8ead0,#90b880);">青茶拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">青茶拿鐵</div>
+            <div class="menu-card-name-en">Oolong Tea Latte</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#c8e8c0,#78b060);">綠茶拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">綠茶拿鐵</div>
+            <div class="menu-card-name-en">Green Tea Latte</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#4a3828,#7a5840);">仙草甘拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">仙草甘拿鐵</div>
+            <div class="menu-card-name-en">Herbal Jelly Latte</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#e8c8a0,#a06830);">焦糖拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">焦糖拿鐵</div>
+            <div class="menu-card-name-en">Caramel Latte</div>
+            <div class="menu-card-price">L $60 / XL $65</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#d8c0a0,#906030);">榛果拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">榛果拿鐵</div>
+            <div class="menu-card-name-en">Hazelnut Latte</div>
+            <div class="menu-card-price">L $60 / XL $65</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 隱藏版 Hidden Menu -->
+    <div class="menu-panel" id="panel-hidden">
+      <div class="menu-panel-header reveal">
+        <h2>隱藏版</h2>
+        <p class="menu-panel-en">Hidden Menu</p>
+      </div>
+      <div class="menu-grid stagger-children">
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5dcc0,#c4783c);">可樂奶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">可樂奶</div>
+            <div class="menu-card-name-en">Cola Milk (Fixed Sugar)</div>
+            <div class="menu-card-price">L $50 / XL $55</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q彈鮮奶茶 Boba Fresh Milk -->
+    <div class="menu-panel" id="panel-boba">
+      <div class="menu-panel-header reveal">
+        <h2>Q彈鮮奶茶</h2>
+        <p class="menu-panel-en">Boba Fresh Milk</p>
+      </div>
+      <div class="menu-grid stagger-children">
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5e6d3,#d4a574);">波霸鮮奶茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">波霸鮮奶茶</div>
+            <div class="menu-card-name-en">Boba Fresh Milk Tea</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f5eacc,#d4a86a);">波霸冬瓜鮮奶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">波霸冬瓜鮮奶</div>
+            <div class="menu-card-name-en">Boba Winter Melon Milk</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#d8ead0,#90b880);">波霸青茶拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">波霸青茶拿鐵</div>
+            <div class="menu-card-name-en">Boba Oolong Latte</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#c8e8c0,#78b060);">波霸綠茶拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">波霸綠茶拿鐵</div>
+            <div class="menu-card-name-en">Boba Green Tea Latte</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#4a3828,#7a5840);">波霸仙草甘拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">波霸仙草甘拿鐵</div>
+            <div class="menu-card-name-en">Boba Herbal Jelly Latte</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#e8c8a0,#a06830);">波霸焦糖拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">波霸焦糖拿鐵</div>
+            <div class="menu-card-name-en">Boba Caramel Latte</div>
+            <div class="menu-card-price">L $60 / XL $65</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#d8c0a0,#906030);">波霸榛果拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">波霸榛果拿鐵</div>
+            <div class="menu-card-name-en">Boba Hazelnut Latte</div>
+            <div class="menu-card-price">L $60 / XL $65</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f0e0cc,#c49a6c);">椰果鮮奶茶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">椰果鮮奶茶</div>
+            <div class="menu-card-name-en">Coconut Jelly Milk Tea</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#f0e4c0,#c4a06a);">椰果冬瓜鮮奶</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">椰果冬瓜鮮奶</div>
+            <div class="menu-card-name-en">Coconut Jelly Winter Melon Milk</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#d0e4c8,#88b078);">椰果青茶拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">椰果青茶拿鐵</div>
+            <div class="menu-card-name-en">Coconut Jelly Oolong Latte</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#c0e0b8,#70a858);">椰果綠茶拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">椰果綠茶拿鐵</div>
+            <div class="menu-card-name-en">Coconut Jelly Green Tea Latte</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#483828,#704838);">椰果仙草甘拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">椰果仙草甘拿鐵</div>
+            <div class="menu-card-name-en">Coconut Jelly Herbal Latte</div>
+            <div class="menu-card-price">L $55 / XL $60</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#e0c098,#986028);">椰果焦糖拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">椰果焦糖拿鐵</div>
+            <div class="menu-card-name-en">Coconut Jelly Caramel Latte</div>
+            <div class="menu-card-price">L $60 / XL $65</div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-image" style="background:linear-gradient(135deg,#d0b898,#885828);">椰果榛果拿鐵</div>
+          <div class="menu-card-info">
+            <div class="menu-card-name">椰果榛果拿鐵</div>
+            <div class="menu-card-name-en">Coconut Jelly Hazelnut Latte</div>
+            <div class="menu-card-price">L $60 / XL $65</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== MENU INFO ========== -->
+  <section class="menu-info-section">
+    <div class="menu-info-grid stagger-children">
+      <div class="menu-info-card reveal">
+        <h4>杯量</h4>
+        <p>L 660cc<br>XL 850cc</p>
+      </div>
+      <div class="menu-info-card reveal">
+        <h4>甜度選擇</h4>
+        <p>無糖 / 微糖 / 半糖<br>少糖 / 全糖</p>
+      </div>
+      <div class="menu-info-card reveal">
+        <h4>冰量選擇</h4>
+        <p>去冰 / 微冰 / 少冰<br>正常 / 多冰</p>
+      </div>
+      <div class="menu-info-card reveal">
+        <h4>加料</h4>
+        <p>全品項可加料 +$5<br>波霸 / 椰果 / 雙料</p>
+      </div>
+    </div>
+    <div class="menu-note reveal">
+      <strong>堅持使用二砂自製炒糖熬煮</strong>，每一杯都是手作的溫度。
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-brand-name font-english">Ha ShEN</div>
+        <p class="footer-brand-desc">
+          More than a drink — real ingredients, made with integrity. A little care in every cup.
+        </p>
+        <p class="footer-brand-desc" style="margin-top:12px;">
+          TAICHUNG, TAIWAN · Since 2016
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>品牌</h5>
+        <a href="about.html">品牌故事</a>
+        <a href="menu.html">菜單</a>
+        <a href="stores.html">門市據點</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>服務</h5>
+        <a href="order.html">線上點餐</a>
+        <a href="franchise.html">加盟資訊</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>社群</h5>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/people/%E5%96%9D%E7%A5%9E%E6%89%8B%E4%BD%9C%E8%8C%B6%E9%A3%B2_%E7%B8%BD%E9%83%A8/61552195955684/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LINE">LINE</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2016-2026 信展有限公司 Ha ShEN. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="回到頂部">&uarr;</button>
+
+  <!-- Scripts -->
+  <script src="../js/main.js"></script>
+
+  <!-- Tab Switching Logic -->
+  <script>
+    (function () {
+      const tabButtons = document.querySelectorAll('.menu-tab-btn');
+      const panels = document.querySelectorAll('.menu-panel');
+
+      tabButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          // Remove active from all buttons
+          tabButtons.forEach(function (b) { b.classList.remove('active'); });
+          // Remove active from all panels
+          panels.forEach(function (p) { p.classList.remove('active'); });
+
+          // Set active on clicked button
+          btn.classList.add('active');
+
+          // Show corresponding panel
+          var tabId = btn.getAttribute('data-tab');
+          var targetPanel = document.getElementById('panel-' + tabId);
+          if (targetPanel) {
+            targetPanel.classList.add('active');
+          }
+
+          // Re-trigger reveal animations for newly visible cards
+          var revealEls = targetPanel.querySelectorAll('.reveal');
+          revealEls.forEach(function (el) {
+            el.classList.remove('animate-in');
+          });
+          setTimeout(function () {
+            revealEls.forEach(function (el, i) {
+              setTimeout(function () {
+                el.classList.add('animate-in');
+              }, i * 60);
+            });
+          }, 50);
+
+          // Re-trigger stagger animations
+          var staggerContainers = targetPanel.querySelectorAll('.stagger-children');
+          staggerContainers.forEach(function (container) {
+            container.classList.remove('animate-in');
+            setTimeout(function () {
+              container.classList.add('animate-in');
+            }, 100);
+          });
+        });
+      });
+
+      // Trigger initial animations for the first active panel
+      setTimeout(function () {
+        var activePanel = document.querySelector('.menu-panel.active');
+        if (activePanel) {
+          activePanel.querySelectorAll('.reveal').forEach(function (el, i) {
+            setTimeout(function () {
+              el.classList.add('animate-in');
+            }, 200 + i * 60);
+          });
+          activePanel.querySelectorAll('.stagger-children').forEach(function (container) {
+            setTimeout(function () {
+              container.classList.add('animate-in');
+            }, 300);
+          });
+        }
+
+        // Animate hero and tabs
+        document.querySelectorAll('.menu-hero .reveal, .menu-tabs-section.reveal').forEach(function (el) {
+          el.classList.add('animate-in');
+        });
+
+        // Animate info section
+        document.querySelectorAll('.menu-info-section .reveal').forEach(function (el, i) {
+          setTimeout(function () {
+            el.classList.add('animate-in');
+          }, i * 100);
+        });
+        document.querySelectorAll('.menu-info-section .stagger-children').forEach(function (container) {
+          setTimeout(function () {
+            container.classList.add('animate-in');
+          }, 200);
+        });
+      }, 100);
+    })();
+  </script>
+</body>
+</html>

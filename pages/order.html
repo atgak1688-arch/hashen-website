@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="喝神手作茶飲 Ha ShEN — 線上點餐，選擇門市、飲品客製化，輕鬆下單。">
+  <title>線上點餐 — 喝神手作茶飲 Ha ShEN</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&family=Ma+Shan+Zheng&family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages.css">
+
+  <style>
+    /* ===== Order Page Styles ===== */
+
+    /* Hero */
+    .order-hero {
+      background: var(--color-bg-dark);
+      padding: 140px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .order-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, #2C2420 0%, #3d2e24 40%, #4a3728 60%, #2C2420 100%);
+      animation: kenBurns 20s ease-in-out infinite alternate;
+    }
+    .order-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .order-hero h1 {
+      font-family: var(--font-display);
+      color: var(--color-text-inverse);
+      margin-bottom: 8px;
+    }
+    .order-hero .hero-subtitle {
+      font-family: var(--font-english);
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* Steps Indicator */
+    .steps-indicator {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+    .step-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--color-text-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-english);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-tertiary);
+      background: var(--color-bg-primary);
+      transition: all 0.4s var(--ease-smooth);
+      flex-shrink: 0;
+    }
+    .step-dot.active {
+      border-color: var(--color-brand);
+      background: var(--color-brand);
+      color: #fff;
+    }
+    .step-dot.done {
+      border-color: var(--color-brand);
+      background: var(--color-brand);
+      color: #fff;
+    }
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: var(--color-bg-secondary);
+      transition: background 0.4s var(--ease-smooth);
+    }
+    .step-line.active {
+      background: var(--color-brand);
+    }
+
+    /* Order Section */
+    .order-section {
+      padding: 60px clamp(24px, 5vw, 80px);
+      background: var(--color-bg-primary);
+    }
+    .order-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .step-panel {
+      display: none;
+    }
+    .step-panel.active {
+      display: block;
+      animation: fadeUp 0.4s var(--ease-smooth);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .step-desc {
+      text-align: center;
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+    }
+
+    /* Step 1: Store Cards */
+    .store-select-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .store-select-card {
+      background: var(--color-bg-card);
+      border: 2px solid transparent;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+      position: relative;
+    }
+    .store-select-card:hover {
+      border-color: var(--color-bg-secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(44,36,32,0.08);
+    }
+    .store-select-card.selected {
+      border-color: var(--color-brand);
+      box-shadow: 0 4px 20px rgba(232,105,45,0.15);
+    }
+    .store-select-card.selected::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      background: var(--color-brand);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-size: 14px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .store-select-card .store-icon {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .store-select-card h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .store-select-card p {
+      font-size: 0.8rem;
+      color: var(--color-text-tertiary);
+    }
+
+    /* Navigation Buttons */
+    .step-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      gap: 16px;
+    }
+    .step-nav .btn {
+      min-width: 140px;
+      justify-content: center;
+    }
+    .btn-secondary {
+      background: var(--color-bg-secondary);
+      color: var(--color-text-primary);
+    }
+    .btn-secondary:hover {
+      background: #e8e0d8;
+    }
+    .btn-brand {
+      background: var(--color-brand);
+      color: #fff;
+    }
+    .btn-brand:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(232,105,45,0.35);
+    }
+    .btn:disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Step 2: Drink Selection */
+    .category-filter {
+      margin-bottom: 24px;
+    }
+    .category-filter select {
+      width: 100%;
+      max-width: 360px;
+      padding: 12px 16px;
+      border: 1.5px solid var(--color-bg-secondary);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      background: var(--color-bg-card);
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B5E54' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      cursor: pointer;
+      transition: border-color 0.3s var(--ease-smooth);
+    }
+    .category-filter select:focus {
+      outline: none;
+      border-color: var(--color-brand);
+    }
+
+    .drink-select-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+      margin-bottom: 32px;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .drink-select-grid::-webkit-scrollbar {
+      width: 4px;
+    }
+    .drink-select-grid::-webkit-scrollbar-thumb {
+      background: var(--color-text-tertiary);
+      border-radius: 4px;
+    }
+    .drink-select-card {
+      background: var(--color-bg-card);
+      border: 2px solid transparent;
+      border-radius: var(--radius-sm);
+      padding: 16px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+    }
+    .drink-select-card:hover {
+      border-color: var(--color-bg-secondary);
+      transform: translateY(-2px);
+    }
+    .drink-select-card.selected {
+      border-color: var(--color-brand);
+      background: rgba(232,105,45,0.04);
+    }
+    .drink-select-card .drink-emoji {
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .drink-select-card .drink-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .drink-select-card .drink-price {
+      font-family: var(--font-english);
+      font-size: 0.78rem;
+      color: var(--color-text-tertiary);
+    }
+
+    /* Customization Panel */
+    .customize-panel {
+      background: var(--color-bg-card);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      margin-top: 24px;
+      display: none;
+      animation: fadeUp 0.3s var(--ease-smooth);
+    }
+    .customize-panel.visible {
+      display: block;
+    }
+    .customize-panel h3 {
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-bg-secondary);
+    }
+
+    .option-group {
+      margin-bottom: 24px;
+    }
+    .option-group label.group-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+    .option-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .option-btn {
+      padding: 8px 18px;
+      border: 1.5px solid var(--color-bg-secondary);
+      border-radius: var(--radius-full);
+      background: var(--color-bg-primary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all 0.25s var(--ease-smooth);
+    }
+    .option-btn:hover {
+      border-color: var(--color-text-tertiary);
+    }
+    .option-btn.selected {
+      border-color: var(--color-brand);
+      background: var(--color-brand);
+      color: #fff;
+    }
+
+    /* Toppings */
+    .topping-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .topping-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      padding: 8px 14px;
+      border: 1.5px solid var(--color-bg-secondary);
+      border-radius: var(--radius-sm);
+      transition: all 0.25s var(--ease-smooth);
+    }
+    .topping-checkbox:hover {
+      border-color: var(--color-text-tertiary);
+    }
+    .topping-checkbox.selected {
+      border-color: var(--color-brand);
+      background: rgba(232,105,45,0.06);
+      color: var(--color-brand);
+    }
+    .topping-checkbox input {
+      display: none;
+    }
+    .topping-check-icon {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--color-text-tertiary);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s var(--ease-smooth);
+      flex-shrink: 0;
+    }
+    .topping-checkbox.selected .topping-check-icon {
+      background: var(--color-brand);
+      border-color: var(--color-brand);
+    }
+    .topping-checkbox.selected .topping-check-icon::after {
+      content: '';
+      width: 10px;
+      height: 6px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(-45deg) translateY(-1px);
+    }
+
+    /* Quantity */
+    .quantity-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1.5px solid var(--color-bg-secondary);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .qty-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg-secondary);
+      border: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .qty-btn:hover {
+      background: #e0d6cc;
+    }
+    .qty-value {
+      width: 48px;
+      text-align: center;
+      font-family: var(--font-english);
+      font-size: 1rem;
+      font-weight: 600;
+      background: var(--color-bg-card);
+    }
+
+    /* Add to Cart */
+    .add-to-cart-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--color-brand);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+    }
+    .add-to-cart-btn:hover {
+      background: var(--color-brand-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(232,105,45,0.3);
+    }
+
+    /* Step 3: Order Summary */
+    .order-summary {
+      background: var(--color-bg-card);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      margin-bottom: 28px;
+    }
+    .order-summary h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-bg-secondary);
+    }
+    .order-summary-empty {
+      text-align: center;
+      padding: 32px;
+      color: var(--color-text-tertiary);
+      font-size: 0.9rem;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--color-bg-secondary);
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .cart-item-info {
+      flex: 1;
+    }
+    .cart-item-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .cart-item-details {
+      font-size: 0.8rem;
+      color: var(--color-text-tertiary);
+      line-height: 1.6;
+    }
+    .cart-item-right {
+      text-align: right;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+    .cart-item-qty {
+      font-family: var(--font-english);
+      font-size: 0.8rem;
+      color: var(--color-text-tertiary);
+    }
+    .cart-item-subtotal {
+      font-family: var(--font-english);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-brand);
+    }
+    .cart-item-remove {
+      font-size: 0.75rem;
+      color: var(--color-text-tertiary);
+      cursor: pointer;
+      margin-top: 4px;
+      transition: color 0.2s;
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+    }
+    .cart-item-remove:hover {
+      color: #d9534f;
+    }
+    .order-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0 0;
+      margin-top: 8px;
+      border-top: 2px solid var(--color-bg-dark);
+    }
+    .order-total-label {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .order-total-amount {
+      font-family: var(--font-english);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-brand);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: var(--color-bg-card);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+    .contact-form h3 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-bg-secondary);
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      margin-bottom: 6px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--color-bg-secondary);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      background: var(--color-bg-primary);
+      transition: border-color 0.3s var(--ease-smooth);
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--color-brand);
+    }
+    .submit-order-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--color-brand);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+      margin-top: 8px;
+    }
+    .submit-order-btn:hover {
+      background: var(--color-brand-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(232,105,45,0.35);
+    }
+    .submit-order-btn:disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Success Overlay */
+    .order-success-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(44,36,32,0.7);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .order-success-overlay.visible {
+      display: flex;
+    }
+    .order-success-box {
+      background: var(--color-bg-card);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      animation: fadeUp 0.5s var(--ease-smooth);
+    }
+    .order-success-box .success-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--color-brand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .order-success-box .success-icon::after {
+      content: '';
+      width: 24px;
+      height: 14px;
+      border-left: 3px solid #fff;
+      border-bottom: 3px solid #fff;
+      transform: rotate(-45deg) translateY(-2px);
+    }
+    .order-success-box h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+    .order-success-box p {
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .order-success-box .btn {
+      display: inline-flex;
+    }
+
+    /* Cart badge for step 2 */
+    .cart-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-brand);
+      color: #fff;
+      font-family: var(--font-english);
+      font-size: 0.7rem;
+      font-weight: 700;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .store-select-grid {
+        grid-template-columns: 1fr;
+      }
+      .drink-select-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .option-buttons {
+        gap: 6px;
+      }
+      .option-btn {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+      }
+      .customize-panel {
+        padding: 20px;
+      }
+      .order-summary, .contact-form {
+        padding: 20px;
+      }
+      .step-nav {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+  </head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar scrolled">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-calligraphy">喝神</span>
+      <span class="nav-logo-text">Ha ShEN</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="../index.html#philosophy" class="nav-link">品牌理念</a>
+      <a href="about.html" class="nav-link">品牌故事</a>
+      <a href="menu.html" class="nav-link">菜單</a>
+      <a href="stores.html" class="nav-link">門市據點</a>
+      <a href="franchise.html" class="nav-link">加盟資訊</a>
+      <a href="order.html" class="nav-order-btn">立即點餐</a>
+    </div>
+
+    <button class="nav-toggle" aria-label="選單">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="order-hero">
+    <div class="order-hero-content">
+      <h1>線上點餐</h1>
+      <p class="hero-subtitle">Online Order</p>
+    </div>
+  </section>
+
+  <!-- ========== ORDER FLOW ========== -->
+  <section class="order-section">
+    <div class="order-container">
+
+      <!-- Steps Indicator -->
+      <div class="steps-indicator">
+        <div class="step-dot active" data-step="1">1</div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="2">2</div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="3">3</div>
+      </div>
+
+      <!-- ===== STEP 1: Select Store ===== -->
+      <div class="step-panel active" id="step1">
+        <h2 class="step-title">選擇門市</h2>
+        <p class="step-desc">請選擇您要取餐的門市</p>
+
+        <div class="store-select-grid">
+          <div class="store-select-card" data-store="喝神梧棲文化店">
+            <span class="store-icon">&#127969;</span>
+            <h4>喝神梧棲文化店</h4>
+            <p>台中市梧棲區 / 10:00-21:30</p>
+          </div>
+          <div class="store-select-card" data-store="清水光復店">
+            <span class="store-icon">&#127969;</span>
+            <h4>清水光復店</h4>
+            <p>台中市清水區 / 10:00-21:30</p>
+          </div>
+          <div class="store-select-card" data-store="線西店">
+            <span class="store-icon">&#127969;</span>
+            <h4>線西店</h4>
+            <p>彰化縣線西鄉 / 10:00-21:30</p>
+          </div>
+          <div class="store-select-card" data-store="台中大雅店">
+            <span class="store-icon">&#127969;</span>
+            <h4>台中大雅店</h4>
+            <p>台中市大雅區 / 10:00-21:30</p>
+          </div>
+          <div class="store-select-card" data-store="清水五權夜市">
+            <span class="store-icon">&#127770;</span>
+            <h4>清水五權夜市</h4>
+            <p>台中市清水區 / 夜市營業時間</p>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <div></div>
+          <button class="btn btn-brand" id="toStep2" disabled>下一步</button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 2: Select Drink & Customize ===== -->
+      <div class="step-panel" id="step2">
+        <h2 class="step-title">選擇飲品與客製化</h2>
+        <p class="step-desc">選擇喜愛的飲品，自由搭配甜度、冰量與加料</p>
+
+        <!-- Category Filter -->
+        <div class="category-filter">
+          <select id="categorySelect">
+            <option value="all">全部分類</option>
+            <option value="tea">純茶系列</option>
+            <option value="milk-tea">奶茶系列</option>
+            <option value="latte">鮮奶茶系列</option>
+            <option value="winter-melon">冬瓜系列</option>
+            <option value="fruit">水果茶系列</option>
+            <option value="yakult">多多系列</option>
+            <option value="special">特調系列</option>
+            <option value="season">季節限定</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+
+        <!-- Drink Grid -->
+        <div class="drink-select-grid" id="drinkGrid">
+          <!-- drinks will be rendered by JS -->
+        </div>
+
+        <!-- Customization Panel -->
+        <div class="customize-panel" id="customizePanel">
+          <h3 id="customizeDrinkName">客製化選項</h3>
+
+          <!-- Size -->
+          <div class="option-group">
+            <label class="group-label">杯量</label>
+            <div class="option-buttons" data-group="size">
+              <button class="option-btn selected" data-value="L">L 660cc</button>
+              <button class="option-btn" data-value="XL">XL 850cc</button>
+            </div>
+          </div>
+
+          <!-- Sweetness -->
+          <div class="option-group">
+            <label class="group-label">甜度</label>
+            <div class="option-buttons" data-group="sweetness">
+              <button class="option-btn" data-value="無糖">無糖</button>
+              <button class="option-btn" data-value="微糖">微糖</button>
+              <button class="option-btn selected" data-value="半糖">半糖</button>
+              <button class="option-btn" data-value="少糖">少糖</button>
+              <button class="option-btn" data-value="全糖">全糖</button>
+            </div>
+          </div>
+
+          <!-- Ice -->
+          <div class="option-group">
+            <label class="group-label">冰量</label>
+            <div class="option-buttons" data-group="ice">
+              <button class="option-btn" data-value="去冰">去冰</button>
+              <button class="option-btn" data-value="微冰">微冰</button>
+              <button class="option-btn" data-value="少冰">少冰</button>
+              <button class="option-btn selected" data-value="正常">正常</button>
+              <button class="option-btn" data-value="多冰">多冰</button>
+            </div>
+          </div>
+
+          <!-- Toppings -->
+          <div class="option-group">
+            <label class="group-label">加料</label>
+            <div class="topping-options">
+              <label class="topping-checkbox">
+                <input type="checkbox" value="波霸" data-price="5">
+                <span class="topping-check-icon"></span>
+                波霸 +$5
+              </label>
+              <label class="topping-checkbox">
+                <input type="checkbox" value="椰果" data-price="5">
+                <span class="topping-check-icon"></span>
+                椰果 +$5
+              </label>
+              <label class="topping-checkbox">
+                <input type="checkbox" value="雙料" data-price="5">
+                <span class="topping-check-icon"></span>
+                雙料 +$5
+              </label>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="option-group">
+            <label class="group-label">數量</label>
+            <div class="quantity-row">
+              <div class="quantity-control">
+                <button class="qty-btn" id="qtyMinus">&minus;</button>
+                <span class="qty-value" id="qtyValue">1</span>
+                <button class="qty-btn" id="qtyPlus">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to Cart -->
+          <button class="add-to-cart-btn" id="addToCartBtn">加入購物車</button>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn btn-secondary" id="backToStep1">上一步</button>
+          <button class="btn btn-brand" id="toStep3">確認訂單<span class="cart-badge" id="cartBadge" style="display:none;">0</span></button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 3: Confirm Order ===== -->
+      <div class="step-panel" id="step3">
+        <h2 class="step-title">確認訂單</h2>
+        <p class="step-desc">確認您的訂單內容並填寫聯絡資訊</p>
+
+        <!-- Order Summary -->
+        <div class="order-summary" id="orderSummary">
+          <h3>訂單摘要</h3>
+          <div id="cartItemsList">
+            <div class="order-summary-empty">尚未加入任何飲品</div>
+          </div>
+          <div class="order-total" id="orderTotalRow" style="display:none;">
+            <span class="order-total-label">總計</span>
+            <span class="order-total-amount" id="orderTotalAmount">$0</span>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" id="orderForm" onsubmit="return false;">
+          <h3>聯絡資訊</h3>
+          <div class="form-group">
+            <label for="customerName">姓名 *</label>
+            <input type="text" id="customerName" placeholder="請輸入您的姓名" required>
+          </div>
+          <div class="form-group">
+            <label for="customerPhone">電話 *</label>
+            <input type="tel" id="customerPhone" placeholder="請輸入您的電話號碼" required>
+          </div>
+          <button type="submit" class="submit-order-btn" id="submitOrderBtn" disabled>送出訂單</button>
+        </form>
+
+        <div class="step-nav">
+          <button class="btn btn-secondary" id="backToStep2">上一步</button>
+          <div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== SUCCESS OVERLAY ========== -->
+  <div class="order-success-overlay" id="successOverlay">
+    <div class="order-success-box">
+      <div class="success-icon"></div>
+      <h2>感謝您的訂單！</h2>
+      <p>我們已收到您的點餐資訊，<br>請於約定時間前往門市取餐。</p>
+      <a href="../index.html" class="btn btn-primary">回到首頁</a>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-brand-name font-english">Ha ShEN</div>
+        <p class="footer-brand-desc">
+          More than a drink — real ingredients, made with integrity. A little care in every cup.
+        </p>
+        <p class="footer-brand-desc" style="margin-top:12px;">
+          TAICHUNG, TAIWAN · Since 2016
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>品牌</h5>
+        <a href="about.html">品牌故事</a>
+        <a href="menu.html">菜單</a>
+        <a href="stores.html">門市據點</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>服務</h5>
+        <a href="order.html">線上點餐</a>
+        <a href="franchise.html">加盟資訊</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>社群</h5>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/people/%E5%96%9D%E7%A5%9E%E6%89%8B%E4%BD%9C%E8%8C%B6%E9%A3%B2_%E7%B8%BD%E9%83%A8/61552195955684/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LINE">LINE</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2016-2026 信展有限公司 Ha ShEN. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="回到頂部">&uarr;</button>
+
+  <!-- Scripts -->
+  <script src="../js/main.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    // ===== Drink Data =====
+    var drinks = [
+      { name: '四季春青茶', category: 'tea', priceL: 30, priceXL: 35 },
+      { name: '茉香綠茶', category: 'tea', priceL: 30, priceXL: 35 },
+      { name: '蜜香紅茶', category: 'tea', priceL: 30, priceXL: 35 },
+      { name: '青茶', category: 'tea', priceL: 25, priceXL: 30 },
+      { name: '紅茶', category: 'tea', priceL: 25, priceXL: 30 },
+
+      { name: '珍珠奶茶', category: 'milk-tea', priceL: 45, priceXL: 50 },
+      { name: '波霸奶茶', category: 'milk-tea', priceL: 45, priceXL: 50 },
+      { name: '椰果奶茶', category: 'milk-tea', priceL: 45, priceXL: 50 },
+      { name: '紅茶奶茶', category: 'milk-tea', priceL: 40, priceXL: 45 },
+      { name: '青茶奶茶', category: 'milk-tea', priceL: 40, priceXL: 45 },
+
+      { name: '波霸鮮奶茶', category: 'latte', priceL: 55, priceXL: 60 },
+      { name: '紅茶拿鐵', category: 'latte', priceL: 55, priceXL: 60 },
+      { name: '青茶拿鐵', category: 'latte', priceL: 55, priceXL: 60 },
+      { name: '四季春拿鐵', category: 'latte', priceL: 55, priceXL: 60 },
+
+      { name: '冬瓜茶', category: 'winter-melon', priceL: 30, priceXL: 35 },
+      { name: '冬瓜鮮奶', category: 'winter-melon', priceL: 50, priceXL: 55 },
+      { name: '冬瓜檸檬', category: 'winter-melon', priceL: 45, priceXL: 50 },
+
+      { name: '檸檬綠茶', category: 'fruit', priceL: 45, priceXL: 50 },
+      { name: '百香果綠茶', category: 'fruit', priceL: 50, priceXL: 55 },
+      { name: '葡萄柚綠茶', category: 'fruit', priceL: 55, priceXL: 60 },
+
+      { name: '冬瓜多多', category: 'yakult', priceL: 50, priceXL: 55 },
+      { name: '檸檬多多', category: 'yakult', priceL: 50, priceXL: 55 },
+      { name: '百香多多', category: 'yakult', priceL: 50, priceXL: 55 },
+
+      { name: '可樂奶', category: 'special', priceL: 50, priceXL: 55 },
+      { name: '黑糖鮮奶', category: 'special', priceL: 55, priceXL: 60 },
+      { name: '黑糖波霸鮮奶', category: 'special', priceL: 60, priceXL: 65 },
+
+      { name: '花香玉綠茶', category: 'season', priceL: 50, priceXL: 55 },
+
+      { name: '冰淇淋紅茶', category: 'other', priceL: 50, priceXL: 55 },
+      { name: '鮮奶', category: 'other', priceL: 40, priceXL: 45 }
+    ];
+
+    // ===== State =====
+    var currentStep = 1;
+    var selectedStore = '';
+    var selectedDrink = null;
+    var cart = [];
+
+    // ===== DOM References =====
+    var stepDots = document.querySelectorAll('.step-dot');
+    var stepLines = document.querySelectorAll('.step-line');
+    var stepPanels = document.querySelectorAll('.step-panel');
+
+    // ===== Navigation Functions =====
+    function goToStep(n) {
+      currentStep = n;
+      stepPanels.forEach(function(p) { p.classList.remove('active'); });
+      document.getElementById('step' + n).classList.add('active');
+
+      stepDots.forEach(function(dot, i) {
+        var s = i + 1;
+        dot.classList.remove('active', 'done');
+        if (s < n) dot.classList.add('done');
+        if (s === n) dot.classList.add('active');
+      });
+      stepLines.forEach(function(line, i) {
+        line.classList.toggle('active', i < n - 1);
+      });
+
+      window.scrollTo({ top: document.querySelector('.order-section').offsetTop - 90, behavior: 'smooth' });
+
+      if (n === 3) renderCart();
+    }
+
+    // ===== Step 1: Store Selection =====
+    var storeCards = document.querySelectorAll('.store-select-card');
+    var toStep2Btn = document.getElementById('toStep2');
+
+    storeCards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        storeCards.forEach(function(c) { c.classList.remove('selected'); });
+        card.classList.add('selected');
+        selectedStore = card.getAttribute('data-store');
+        toStep2Btn.disabled = false;
+      });
+    });
+
+    toStep2Btn.addEventListener('click', function() {
+      if (selectedStore) goToStep(2);
+    });
+
+    // ===== Step 2: Drink Selection =====
+    var drinkGrid = document.getElementById('drinkGrid');
+    var categorySelect = document.getElementById('categorySelect');
+    var customizePanel = document.getElementById('customizePanel');
+    var customizeDrinkName = document.getElementById('customizeDrinkName');
+
+    function renderDrinks(category) {
+      var filtered = category === 'all' ? drinks : drinks.filter(function(d) { return d.category === category; });
+      drinkGrid.innerHTML = '';
+      filtered.forEach(function(d) {
+        var card = document.createElement('div');
+        card.className = 'drink-select-card';
+        card.setAttribute('data-drink', d.name);
+        card.innerHTML = '<span class="drink-name">' + d.name + '</span>' +
+          '<span class="drink-price">$' + d.priceL + ' / $' + d.priceXL + '</span>';
+        card.addEventListener('click', function() {
+          document.querySelectorAll('.drink-select-card').forEach(function(c) { c.classList.remove('selected'); });
+          card.classList.add('selected');
+          selectDrink(d);
+        });
+        drinkGrid.appendChild(card);
+      });
+    }
+
+    function selectDrink(d) {
+      selectedDrink = d;
+      customizeDrinkName.textContent = d.name + ' — 客製化';
+      customizePanel.classList.add('visible');
+
+      // Reset customization
+      resetCustomization();
+    }
+
+    function resetCustomization() {
+      // Reset size to L
+      document.querySelectorAll('[data-group="size"] .option-btn').forEach(function(btn) {
+        btn.classList.toggle('selected', btn.getAttribute('data-value') === 'L');
+      });
+      // Reset sweetness to 半糖
+      document.querySelectorAll('[data-group="sweetness"] .option-btn').forEach(function(btn) {
+        btn.classList.toggle('selected', btn.getAttribute('data-value') === '半糖');
+      });
+      // Reset ice to 正常
+      document.querySelectorAll('[data-group="ice"] .option-btn').forEach(function(btn) {
+        btn.classList.toggle('selected', btn.getAttribute('data-value') === '正常');
+      });
+      // Reset toppings
+      document.querySelectorAll('.topping-checkbox').forEach(function(cb) {
+        cb.classList.remove('selected');
+        cb.querySelector('input').checked = false;
+      });
+      // Reset quantity
+      document.getElementById('qtyValue').textContent = '1';
+    }
+
+    categorySelect.addEventListener('change', function() {
+      renderDrinks(this.value);
+      customizePanel.classList.remove('visible');
+      selectedDrink = null;
+    });
+
+    // Option buttons (size, sweetness, ice)
+    document.querySelectorAll('.option-buttons').forEach(function(group) {
+      group.addEventListener('click', function(e) {
+        var btn = e.target.closest('.option-btn');
+        if (!btn) return;
+        group.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+      });
+    });
+
+    // Toppings
+    document.querySelectorAll('.topping-checkbox').forEach(function(label) {
+      label.addEventListener('click', function(e) {
+        e.preventDefault();
+        var input = label.querySelector('input');
+        input.checked = !input.checked;
+        label.classList.toggle('selected', input.checked);
+      });
+    });
+
+    // Quantity
+    var qtyValue = document.getElementById('qtyValue');
+    document.getElementById('qtyMinus').addEventListener('click', function() {
+      var v = parseInt(qtyValue.textContent);
+      if (v > 1) qtyValue.textContent = v - 1;
+    });
+    document.getElementById('qtyPlus').addEventListener('click', function() {
+      var v = parseInt(qtyValue.textContent);
+      if (v < 20) qtyValue.textContent = v + 1;
+    });
+
+    // Add to Cart
+    var cartBadge = document.getElementById('cartBadge');
+
+    document.getElementById('addToCartBtn').addEventListener('click', function() {
+      if (!selectedDrink) return;
+
+      var size = document.querySelector('[data-group="size"] .option-btn.selected').getAttribute('data-value');
+      var sweetness = document.querySelector('[data-group="sweetness"] .option-btn.selected').getAttribute('data-value');
+      var ice = document.querySelector('[data-group="ice"] .option-btn.selected').getAttribute('data-value');
+      var qty = parseInt(qtyValue.textContent);
+
+      var toppings = [];
+      var toppingExtra = 0;
+      document.querySelectorAll('.topping-checkbox input:checked').forEach(function(inp) {
+        toppings.push(inp.value);
+        toppingExtra += parseInt(inp.getAttribute('data-price'));
+      });
+
+      var unitPrice = (size === 'L' ? selectedDrink.priceL : selectedDrink.priceXL) + toppingExtra;
+
+      cart.push({
+        name: selectedDrink.name,
+        size: size,
+        sweetness: sweetness,
+        ice: ice,
+        toppings: toppings,
+        qty: qty,
+        unitPrice: unitPrice,
+        subtotal: unitPrice * qty
+      });
+
+      updateCartBadge();
+
+      // Visual feedback
+      var btn = document.getElementById('addToCartBtn');
+      btn.textContent = '已加入！';
+      btn.style.background = '#4caf50';
+      setTimeout(function() {
+        btn.textContent = '加入購物車';
+        btn.style.background = '';
+      }, 1200);
+
+      // Reset selection
+      customizePanel.classList.remove('visible');
+      document.querySelectorAll('.drink-select-card').forEach(function(c) { c.classList.remove('selected'); });
+      selectedDrink = null;
+    });
+
+    function updateCartBadge() {
+      var total = cart.reduce(function(s, item) { return s + item.qty; }, 0);
+      if (total > 0) {
+        cartBadge.style.display = 'inline-flex';
+        cartBadge.textContent = total;
+      } else {
+        cartBadge.style.display = 'none';
+      }
+    }
+
+    // Step 2 nav
+    document.getElementById('backToStep1').addEventListener('click', function() { goToStep(1); });
+    document.getElementById('toStep3').addEventListener('click', function() { goToStep(3); });
+
+    // ===== Step 3: Order Summary =====
+    var cartItemsList = document.getElementById('cartItemsList');
+    var orderTotalRow = document.getElementById('orderTotalRow');
+    var orderTotalAmount = document.getElementById('orderTotalAmount');
+    var submitOrderBtn = document.getElementById('submitOrderBtn');
+
+    function renderCart() {
+      if (cart.length === 0) {
+        cartItemsList.innerHTML = '<div class="order-summary-empty">尚未加入任何飲品</div>';
+        orderTotalRow.style.display = 'none';
+        submitOrderBtn.disabled = true;
+        return;
+      }
+
+      var html = '';
+      var grandTotal = 0;
+      cart.forEach(function(item, idx) {
+        grandTotal += item.subtotal;
+        var details = item.size + ' / ' + item.sweetness + ' / ' + item.ice;
+        if (item.toppings.length) details += ' / 加料: ' + item.toppings.join('、');
+
+        html += '<div class="cart-item">' +
+          '<div class="cart-item-info">' +
+            '<div class="cart-item-name">' + item.name + '</div>' +
+            '<div class="cart-item-details">' + details + '</div>' +
+          '</div>' +
+          '<div class="cart-item-right">' +
+            '<div class="cart-item-qty">x' + item.qty + '</div>' +
+            '<div class="cart-item-subtotal">$' + item.subtotal + '</div>' +
+            '<button class="cart-item-remove" data-idx="' + idx + '">移除</button>' +
+          '</div>' +
+        '</div>';
+      });
+
+      cartItemsList.innerHTML = html;
+      orderTotalRow.style.display = 'flex';
+      orderTotalAmount.textContent = '$' + grandTotal;
+      submitOrderBtn.disabled = false;
+
+      // Remove buttons
+      document.querySelectorAll('.cart-item-remove').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          cart.splice(parseInt(btn.getAttribute('data-idx')), 1);
+          updateCartBadge();
+          renderCart();
+        });
+      });
+    }
+
+    document.getElementById('backToStep2').addEventListener('click', function() { goToStep(2); });
+
+    // ===== Form Validation & Submit =====
+    var customerName = document.getElementById('customerName');
+    var customerPhone = document.getElementById('customerPhone');
+
+    function checkFormValid() {
+      var hasItems = cart.length > 0;
+      var hasName = customerName.value.trim().length > 0;
+      var hasPhone = customerPhone.value.trim().length > 0;
+      submitOrderBtn.disabled = !(hasItems && hasName && hasPhone);
+    }
+
+    customerName.addEventListener('input', checkFormValid);
+    customerPhone.addEventListener('input', checkFormValid);
+
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (cart.length === 0) return;
+      if (!customerName.value.trim() || !customerPhone.value.trim()) return;
+
+      // Show success
+      document.getElementById('successOverlay').classList.add('visible');
+
+      // Reset everything
+      cart = [];
+      updateCartBadge();
+      selectedStore = '';
+      selectedDrink = null;
+      storeCards.forEach(function(c) { c.classList.remove('selected'); });
+      toStep2Btn.disabled = true;
+      customerName.value = '';
+      customerPhone.value = '';
+    });
+
+    submitOrderBtn.addEventListener('click', function() {
+      document.getElementById('orderForm').dispatchEvent(new Event('submit'));
+    });
+
+    // ===== Initial Render =====
+    renderDrinks('all');
+
+    // ===== Mobile Nav Toggle (same as main site) =====
+    var navToggle = document.querySelector('.nav-toggle');
+    var navLinks = document.querySelector('.nav-links');
+    if (navToggle) {
+      navToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('open');
+      });
+    }
+
+  })();
+  </script>
+
+</body>
+</html>

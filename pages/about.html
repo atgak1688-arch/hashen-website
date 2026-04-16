@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="喝神手作茶飲 Ha ShEN 品牌故事 — 2016年從台中海線夜市出發，堅持手作、嚴選原料，一步一腳印走到今天。">
+  <meta name="keywords" content="喝神,Ha ShEN,品牌故事,手作茶飲,台中飲料,手搖飲">
+  <meta property="og:title" content="品牌故事 — 喝神手作茶飲 Ha ShEN">
+  <meta property="og:description" content="從海線夜市的一杯茶開始，喝神的故事。">
+  <meta property="og:type" content="website">
+  <title>品牌故事 — 喝神手作茶飲 Ha ShEN</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&family=Ma+Shan+Zheng&family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages.css">
+
+  <style>
+    /* ========== Page Hero ========== */
+    .page-hero {
+      position: relative;
+      width: 100%;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2C2420;
+      text-align: center;
+      padding: 120px 24px 80px;
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      color: var(--color-text-inverse);
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 8px;
+    }
+
+    .page-hero .page-hero-en {
+      font-family: var(--font-english);
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      color: var(--color-gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .page-hero .page-hero-line {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--color-gold);
+      margin: 20px auto 0;
+    }
+
+    /* ========== Timeline Section ========== */
+    .timeline-section {
+      padding: clamp(60px, 10vw, 120px) clamp(24px, 5vw, 80px);
+      background: var(--color-bg-primary);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    /* Central vertical line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, var(--color-gold) 10%, var(--color-gold) 90%, transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 0 48px 60px;
+    }
+
+    /* Odd items: left side */
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+      padding-right: 48px;
+      padding-left: 0;
+    }
+
+    /* Even items: right side */
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+      padding-left: 48px;
+      padding-right: 0;
+    }
+
+    /* Node dot */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      background: var(--color-brand);
+      border: 3px solid var(--color-bg-primary);
+      border-radius: 50%;
+      z-index: 2;
+      box-shadow: 0 0 0 3px var(--color-brand);
+    }
+
+    .timeline-item:nth-child(odd)::before {
+      right: -7px;
+    }
+
+    .timeline-item:nth-child(even)::before {
+      left: -7px;
+    }
+
+    .timeline-year {
+      font-family: var(--font-english);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--color-gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .timeline-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .timeline-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.9;
+    }
+
+    /* ========== Quality Section ========== */
+    .quality-section {
+      padding: clamp(60px, 10vw, 120px) clamp(24px, 5vw, 80px);
+      background: var(--color-bg-secondary);
+    }
+
+    .quality-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .quality-card {
+      background: var(--color-bg-card);
+      border-radius: var(--radius-md);
+      padding: 36px 24px;
+      text-align: center;
+      transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+    }
+
+    .quality-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(44, 36, 32, 0.1);
+    }
+
+    .quality-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
+      background: var(--color-bg-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .quality-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: var(--color-text-primary);
+    }
+
+    .quality-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ========== Founder Section ========== */
+    .founder-section {
+      padding: clamp(80px, 12vw, 140px) clamp(24px, 5vw, 80px);
+      background: var(--color-bg-primary);
+      text-align: center;
+    }
+
+    .founder-quote {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .founder-quote blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      line-height: 1.8;
+      position: relative;
+      padding: 0 20px;
+    }
+
+    .founder-quote blockquote::before,
+    .founder-quote blockquote::after {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--color-gold);
+      position: absolute;
+      line-height: 1;
+    }
+
+    .founder-quote blockquote::before {
+      content: '\300C';
+      top: -10px;
+      left: -10px;
+    }
+
+    .founder-quote blockquote::after {
+      content: '\300D';
+      bottom: -20px;
+      right: -10px;
+    }
+
+    .founder-line {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--color-gold);
+      margin: 32px auto;
+    }
+
+    .founder-attribution {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.1em;
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 56px !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+        left: 0 !important;
+      }
+
+      .timeline-item::before {
+        left: 13px !important;
+        right: auto !important;
+      }
+
+      .quality-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .quality-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+  </head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-calligraphy">喝神</span>
+      <span class="nav-logo-text">Ha ShEN</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="../index.html#philosophy" class="nav-link" data-section="philosophy">品牌理念</a>
+      <a href="about.html" class="nav-link active">品牌故事</a>
+      <a href="menu.html" class="nav-link">菜單</a>
+      <a href="stores.html" class="nav-link">門市據點</a>
+      <a href="franchise.html" class="nav-link">加盟資訊</a>
+      <a href="order.html" class="nav-order-btn">立即點餐</a>
+    </div>
+
+    <button class="nav-toggle" aria-label="選單">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ========== PAGE HERO ========== -->
+  <section class="page-hero">
+    <div class="page-hero-content reveal">
+      <p class="page-hero-en font-english">Our Story</p>
+      <h1 class="font-display">品牌故事</h1>
+      <span class="page-hero-line"></span>
+    </div>
+  </section>
+
+  <!-- ========== TIMELINE SECTION ========== -->
+  <section class="timeline-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-subtitle font-english">Timeline</p>
+        <h2 class="font-display">一步一腳印</h2>
+        <span class="gold-line"></span>
+      </div>
+
+      <div class="timeline">
+        <!-- 2016 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-year font-english">2016</div>
+          <h3 class="timeline-title font-display">從海線夜市的一杯茶開始</h3>
+          <p class="timeline-desc">「你好，喝神」一句招呼，也是我們的名字。客人來的時候，一句「喝神」就是「你要喝什麼呢？」我們想做的，是讓每個人都能用平實的價格，喝到一杯有神韻的好茶。</p>
+        </div>
+
+        <!-- 2018 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-year font-english">2018</div>
+          <h3 class="timeline-title font-display">第一間實體店落地清水</h3>
+          <p class="timeline-desc">從夜市攤位走進店面，不變的是每一杯的手作堅持。</p>
+        </div>
+
+        <!-- 2020 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-year font-english">2020</div>
+          <h3 class="timeline-title font-display">拓展至梧棲、線西</h3>
+          <p class="timeline-desc">海線的好味道，開始走向更多地方。</p>
+        </div>
+
+        <!-- 2024 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-year font-english">2024</div>
+          <h3 class="timeline-title font-display">五間門市，持續展店中</h3>
+          <p class="timeline-desc">清水、梧棲、線西、大雅，一步一腳印。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== QUALITY SECTION ========== -->
+  <section class="quality-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-subtitle font-english">Our Commitment</p>
+        <h2 class="font-display">品質堅持</h2>
+        <span class="gold-line"></span>
+      </div>
+
+      <div class="quality-grid stagger-children">
+        <div class="quality-card" data-stagger="0">
+          <div class="quality-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h4 class="font-display">嚴選原料</h4>
+          <p>每一款茶底都經過反覆測試</p>
+        </div>
+
+        <div class="quality-card" data-stagger="1">
+          <div class="quality-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 8C17 5.24 14.76 3 12 3S7 5.24 7 8c0 3.53 5 9 5 9s5-5.47 5-9z"/>
+              <circle cx="12" cy="8" r="2"/>
+              <path d="M4 21h16"/>
+            </svg>
+          </div>
+          <h4 class="font-display">二砂炒糖</h4>
+          <p>堅持自製炒糖熬煮，不用現成糖漿</p>
+        </div>
+
+        <div class="quality-card" data-stagger="2">
+          <div class="quality-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 010 8h-1"/>
+              <path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/>
+              <line x1="6" y1="1" x2="6" y2="4"/>
+              <line x1="10" y1="1" x2="10" y2="4"/>
+              <line x1="14" y1="1" x2="14" y2="4"/>
+            </svg>
+          </div>
+          <h4 class="font-display">手作現調</h4>
+          <p>每杯現點現做，保留手作溫度</p>
+        </div>
+
+        <div class="quality-card" data-stagger="3">
+          <div class="quality-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h4 class="font-display">食安把關</h4>
+          <p>品質控管是我們最在意的事</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOUNDER SECTION ========== -->
+  <section class="founder-section">
+    <div class="container">
+      <div class="founder-quote reveal">
+        <blockquote class="font-display">
+          產品做得自己喜歡，別人也才會喜歡。
+        </blockquote>
+        <span class="founder-line"></span>
+        <p class="founder-attribution">— 喝神手作茶飲 創辦人</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-brand-name font-english">Ha ShEN</div>
+        <p class="footer-brand-desc">
+          More than a drink — real ingredients, made with integrity. A little care in every cup.
+        </p>
+        <p class="footer-brand-desc" style="margin-top:12px;">
+          TAICHUNG, TAIWAN · Since 2016
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>品牌</h5>
+        <a href="about.html">品牌故事</a>
+        <a href="menu.html">菜單</a>
+        <a href="stores.html">門市據點</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>服務</h5>
+        <a href="order.html">線上點餐</a>
+        <a href="franchise.html">加盟資訊</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>社群</h5>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/people/%E5%96%9D%E7%A5%9E%E6%89%8B%E4%BD%9C%E8%8C%B6%E9%A3%B2_%E7%B8%BD%E9%83%A8/61552195955684/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LINE">LINE</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2016-2026 信展有限公司 Ha ShEN. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="回到頂部">↑</button>
+
+  <!-- Scripts -->
+  <script src="../js/main.js"></script>
+</body>
+</html>

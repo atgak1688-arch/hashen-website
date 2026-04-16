@@ -1,0 +1,561 @@
+/* ============================================
+   喝神手作茶飲 Ha ShEN — Sub-Page Styles
+   ============================================ */
+
+/* --- Page Hero (sub-pages) --- */
+.page-hero {
+  position: relative;
+  height: 340px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-dark);
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, #2C2420 0%, #3d2e24 40%, #4a3728 60%, #2C2420 100%);
+  animation: kenBurns 20s ease-in-out infinite alternate;
+}
+
+.page-hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(180deg, rgba(44,36,32,0.3) 0%, rgba(44,36,32,0.6) 100%);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--color-text-inverse);
+}
+
+.page-hero-content .page-subtitle {
+  font-family: var(--font-english);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 8px;
+}
+
+.page-hero-content h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--color-text-inverse);
+  margin-bottom: 12px;
+}
+
+.page-hero-content .page-tagline {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+}
+
+/* --- Stores Page --- */
+.stores-map-full {
+  width: 100%;
+  height: 450px;
+  border: 0;
+  display: block;
+}
+
+.stores-map-section {
+  background: var(--color-bg-primary);
+  padding: 0;
+}
+
+.stores-grid-section {
+  background: var(--color-bg-secondary);
+}
+
+.stores-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.store-detail-card {
+  background: var(--color-bg-card);
+  padding: 32px;
+  border-radius: var(--radius-md);
+  position: relative;
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.store-detail-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(44, 36, 32, 0.1);
+}
+
+.store-detail-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.store-detail-card .store-area {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.store-detail-card .store-hours {
+  font-size: 0.85rem;
+  color: var(--color-text-tertiary);
+  margin-bottom: 16px;
+}
+
+.store-detail-card .store-hours::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--color-text-tertiary);
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: -2px;
+}
+
+.store-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-inverse);
+  background: var(--color-brand);
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  border: none;
+  transition: all var(--duration-fast) var(--ease-smooth);
+  cursor: pointer;
+}
+
+.store-nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(232, 105, 45, 0.35);
+}
+
+/* --- Franchise Page --- */
+.franchise-advantages {
+  background: var(--color-bg-primary);
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.advantage-card {
+  background: var(--color-bg-card);
+  padding: 36px 28px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.advantage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(44, 36, 32, 0.1);
+}
+
+.advantage-icon {
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--color-brand);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--color-brand);
+  background: rgba(232, 105, 45, 0.06);
+}
+
+.advantage-card h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.advantage-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+/* --- Franchise Steps --- */
+.franchise-steps {
+  background: var(--color-bg-secondary);
+}
+
+.steps-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.step-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 16px;
+}
+
+.step-number {
+  width: 56px;
+  height: 56px;
+  background: var(--color-brand);
+  color: var(--color-text-inverse);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-english);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 auto 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.step-item h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.step-item p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+/* Connecting line between steps */
+.step-connector {
+  position: absolute;
+  top: 28px;
+  left: calc(50% + 28px);
+  width: calc(100% - 56px);
+  height: 2px;
+  background: var(--color-gold);
+  z-index: 1;
+}
+
+.step-item:last-child .step-connector {
+  display: none;
+}
+
+/* --- Franchise Form --- */
+.franchise-form-section {
+  background: var(--color-bg-primary);
+}
+
+.franchise-form {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  transition: border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(232, 105, 45, 0.12);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-submit-row {
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* --- Responsive (sub-pages) --- */
+
+/* ========== Tablet ========== */
+@media (max-width: 900px) {
+  .page-hero {
+    height: 260px;
+    min-height: 220px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  /* Timeline: single column */
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: 100% !important;
+    left: 0 !important;
+    padding-left: 56px !important;
+    padding-right: 20px !important;
+    text-align: left !important;
+  }
+
+  .timeline-dot {
+    left: 12px !important;
+    right: auto !important;
+  }
+
+  .timeline-year {
+    font-size: 1.6rem;
+  }
+
+  /* Quality grid */
+  .quality-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Franchise */
+  .advantages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  /* Stores */
+  .stores-detail-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Menu */
+  .menu-tabs {
+    gap: 6px;
+  }
+
+  .menu-tab {
+    font-size: 0.78rem;
+    padding: 8px 14px;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .menu-item-image {
+    height: 150px;
+  }
+
+  /* Form */
+  .franchise-form {
+    padding: 0 16px;
+  }
+}
+
+/* ========== Mobile ========== */
+@media (max-width: 600px) {
+  .page-hero {
+    height: 220px;
+    min-height: 180px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .page-hero-content .page-subtitle {
+    font-size: 0.72rem;
+  }
+
+  /* Timeline */
+  .timeline-item {
+    padding-left: 48px !important;
+  }
+
+  .timeline-year {
+    font-size: 1.3rem;
+  }
+
+  .timeline-title {
+    font-size: 1rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.85rem;
+  }
+
+  /* Quality */
+  .quality-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .quality-card {
+    padding: 28px 20px;
+  }
+
+  /* Stores */
+  .stores-map-full {
+    height: 260px;
+  }
+
+  .stores-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .store-detail-card {
+    padding: 24px 20px;
+  }
+
+  /* Menu */
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .menu-item-image {
+    height: 120px;
+  }
+
+  .menu-item-info {
+    padding: 12px 8px;
+  }
+
+  .menu-item-name {
+    font-size: 0.85rem;
+  }
+
+  .menu-item-price {
+    font-size: 0.78rem;
+  }
+
+  .menu-info-bar {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 16px;
+  }
+
+  /* Quote */
+  .quote-block {
+    padding: 48px 20px;
+  }
+
+  .quote-text {
+    font-size: 1.1rem;
+  }
+
+  /* Franchise */
+  .advantage-card {
+    padding: 28px 20px;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  /* Order */
+  .store-select-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .option-buttons {
+    gap: 6px;
+  }
+
+  .option-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .order-steps {
+    gap: 0;
+  }
+
+  .order-step-indicator {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .order-step-connector {
+    width: 20px;
+  }
+}
+
+/* ========== Small Mobile ========== */
+@media (max-width: 380px) {
+  .page-hero {
+    height: 180px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 1.3rem;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-tab {
+    font-size: 0.72rem;
+    padding: 6px 10px;
+  }
+
+  .timeline-item {
+    padding-left: 40px !important;
+  }
+}

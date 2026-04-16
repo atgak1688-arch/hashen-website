@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="喝神手作茶飲 Ha ShEN — 2016年創立於台中海線，堅持手作、嚴選原料、用心調製每一杯好茶。More than a drink.">
+  <meta name="keywords" content="喝神,Ha ShEN,手作茶飲,台中飲料,手搖飲,珍珠奶茶,波霸鮮奶茶">
+  <meta property="og:title" content="喝神手作茶飲 Ha ShEN">
+  <meta property="og:description" content="不只是飲料，是手作的堅持。More than a drink — real ingredients, made with integrity.">
+  <meta property="og:type" content="website">
+  <title>喝神手作茶飲 Ha ShEN — More than a drink</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <!-- Ma Shan Zheng for brush calligraphy feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- ========== SPLASH SCREEN ========== -->
+  <div class="splash-screen" aria-hidden="true">
+    <div class="splash-logo-container">
+      <!-- Calligraphy rendered with brush-style web font + stroke reveal animation -->
+      <div class="splash-calligraphy-text">
+        <span class="splash-char" data-char="喝">喝</span>
+        <span class="splash-char" data-char="神">神</span>
+      </div>
+
+      <span class="splash-english">Ha ShEN</span>
+      <span class="splash-subtitle">手 作 茶 飲</span>
+
+      <div class="splash-line">
+        <span class="splash-line-left"></span>
+        <span class="splash-line-right"></span>
+      </div>
+    </div>
+
+    <button class="splash-skip">SKIP</button>
+  </div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-calligraphy">喝神</span>
+      <span class="nav-logo-text">Ha ShEN</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#philosophy" class="nav-link" data-section="philosophy">品牌理念</a>
+      <a href="pages/about.html" class="nav-link">品牌故事</a>
+      <a href="pages/menu.html" class="nav-link">菜單</a>
+      <a href="pages/stores.html" class="nav-link">門市據點</a>
+      <a href="pages/franchise.html" class="nav-link">加盟資訊</a>
+      <a href="pages/order.html" class="nav-order-btn">立即點餐</a>
+    </div>
+
+    <button class="nav-toggle" aria-label="選單">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="hero">
+    <!-- Background: gradient overlay simulating video bg -->
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <!-- Calligraphy Logo -->
+      <div class="hero-calligraphy-text">喝神</div>
+
+      <div class="hero-brand-en font-english">Ha ShEN</div>
+      <p class="hero-tagline font-display">不只是飲料，是手作的堅持</p>
+
+      <div class="hero-buttons">
+        <a href="pages/order.html" class="btn btn-primary">立即點餐</a>
+        <a href="pages/about.html" class="btn btn-outline">認識我們</a>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== PHILOSOPHY SECTION ========== -->
+  <section class="section philosophy" id="philosophy">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div class="philosophy-text">
+          <h2 class="font-display">
+            「產品做得自己喜歡，<br>別人也才會喜歡。」
+            <span class="underline-gold"></span>
+          </h2>
+          <p class="philosophy-desc">
+            2016 年，從台中海線夜市的一個小攤位開始，喝神手作茶飲用一杯杯現點現做的茶飲，在社區裡累積起口碑。我們堅持使用二砂自製炒糖熬煮，從選茶到每一杯的比例調配，從未妥協。
+          </p>
+          <a href="pages/about.html" class="link-arrow">
+            閱讀完整故事 <span class="arrow">→</span>
+          </a>
+        </div>
+        <div class="philosophy-image">
+          <div class="philosophy-img-placeholder" style="width:100%;height:450px;background:linear-gradient(135deg, var(--color-bg-secondary), #d4a574);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:0.9rem;">
+            品牌形象照
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RECOMMEND SECTION ========== -->
+  <section class="section recommend" id="recommend">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-subtitle font-english">Recommend</p>
+        <h2>嚴選推薦</h2>
+        <span class="gold-line"></span>
+      </div>
+
+      <div class="recommend-grid stagger-children">
+        <div class="drink-card" data-stagger="0">
+          <div class="drink-card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f5e6d3,#d4a574);display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:0.85rem;">波霸鮮奶茶</div>
+          </div>
+          <div class="drink-card-info">
+            <h4 class="drink-card-name">波霸鮮奶茶</h4>
+            <p class="drink-card-name-en font-english" style="font-size:0.75rem;color:var(--color-text-tertiary);">Boba Fresh Milk Tea</p>
+            <p class="drink-card-price">$55 / $60</p>
+          </div>
+        </div>
+
+        <div class="drink-card" data-stagger="1">
+          <div class="drink-card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#e8d5c0,#c49a6c);display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:0.85rem;">紅茶拿鐵</div>
+          </div>
+          <div class="drink-card-info">
+            <h4 class="drink-card-name">紅茶拿鐵</h4>
+            <p class="drink-card-name-en font-english" style="font-size:0.75rem;color:var(--color-text-tertiary);">Black Tea Latte</p>
+            <p class="drink-card-price">$55 / $60</p>
+          </div>
+        </div>
+
+        <div class="drink-card" data-stagger="2">
+          <div class="drink-card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f0e4c8,#e2c87a);display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:0.85rem;">冬瓜多多</div>
+          </div>
+          <div class="drink-card-info">
+            <h4 class="drink-card-name">冬瓜多多</h4>
+            <p class="drink-card-name-en font-english" style="font-size:0.75rem;color:var(--color-text-tertiary);">Winter Melon Yakult</p>
+            <p class="drink-card-price">$50 / $55</p>
+          </div>
+        </div>
+
+        <div class="drink-card" data-stagger="3">
+          <div class="drink-card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#d5e8d0,#8cb87a);display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:0.85rem;">四季春青茶</div>
+          </div>
+          <div class="drink-card-info">
+            <h4 class="drink-card-name">四季春青茶</h4>
+            <p class="drink-card-name-en font-english" style="font-size:0.75rem;color:var(--color-text-tertiary);">Four Seasons Oolong</p>
+            <p class="drink-card-price">$30 / $35</p>
+          </div>
+        </div>
+
+        <div class="drink-card" data-stagger="4">
+          <div class="drink-card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f5dcc0,#c4783c);display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:0.85rem;">可樂奶</div>
+          </div>
+          <div class="drink-card-info">
+            <h4 class="drink-card-name">可樂奶</h4>
+            <p class="drink-card-name-en font-english" style="font-size:0.75rem;color:var(--color-text-tertiary);">Cola Milk · Hidden Menu</p>
+            <p class="drink-card-price">$50 / $55</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:40px;" class="reveal">
+        <a href="pages/menu.html" class="link-arrow">
+          查看完整菜單 <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWS SECTION ========== -->
+  <section class="section news" id="news">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-subtitle font-english">Recently News</p>
+        <h2>最新消息</h2>
+        <span class="gold-line"></span>
+      </div>
+
+      <div class="news-grid stagger-children">
+        <a href="#" class="news-card" data-stagger="0">
+          <div class="news-card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--color-bg-secondary),#d4a574);display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:0.85rem;">新聞圖片</div>
+          </div>
+          <div class="news-card-body">
+            <span class="news-card-date font-english">2026.04.01</span>
+            <h4 class="news-card-title">大雅店盛大開幕</h4>
+            <span class="news-card-link">閱讀更多 →</span>
+          </div>
+        </a>
+
+        <a href="#" class="news-card" data-stagger="1">
+          <div class="news-card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--color-bg-secondary),#8cb87a);display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:0.85rem;">新聞圖片</div>
+          </div>
+          <div class="news-card-body">
+            <span class="news-card-date font-english">2026.03.15</span>
+            <h4 class="news-card-title">春季新品上市 — 花香玉綠茶系列</h4>
+            <span class="news-card-link">閱讀更多 →</span>
+          </div>
+        </a>
+
+        <a href="#" class="news-card" data-stagger="2">
+          <div class="news-card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--color-bg-secondary),var(--color-brand-light));display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:0.85rem;">新聞圖片</div>
+          </div>
+          <div class="news-card-body">
+            <span class="news-card-date font-english">2026.02.28</span>
+            <h4 class="news-card-title">加盟說明會報名中</h4>
+            <span class="news-card-link">閱讀更多 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STORES PREVIEW SECTION ========== -->
+  <section class="section stores-preview" id="stores">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-subtitle font-english">Store Locations</p>
+        <h2>門市據點</h2>
+        <span class="gold-line"></span>
+      </div>
+
+      <div class="stores-map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116685.45!2d120.55!3d24.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z5Y-w5Lit5biC!5e0!3m2!1szh-TW!2stw!4v1"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="喝神手作茶飲門市據點">
+        </iframe>
+      </div>
+
+      <div class="stores-list stagger-children">
+        <div class="store-card" data-stagger="0">
+          <h4><span class="store-pulse"></span>喝神梧棲文化店</h4>
+          <p>台中市梧棲區</p>
+          <p style="font-size:0.8rem;color:var(--color-text-tertiary);margin-top:4px;">10:00 - 21:30</p>
+        </div>
+        <div class="store-card" data-stagger="1">
+          <h4><span class="store-pulse"></span>清水光復店</h4>
+          <p>台中市清水區</p>
+          <p style="font-size:0.8rem;color:var(--color-text-tertiary);margin-top:4px;">10:00 - 21:30</p>
+        </div>
+        <div class="store-card" data-stagger="2">
+          <h4><span class="store-pulse"></span>線西店</h4>
+          <p>彰化縣線西鄉</p>
+          <p style="font-size:0.8rem;color:var(--color-text-tertiary);margin-top:4px;">10:00 - 21:30</p>
+        </div>
+        <div class="store-card" data-stagger="3">
+          <h4><span class="store-pulse"></span>台中大雅店</h4>
+          <p>台中市大雅區</p>
+          <p style="font-size:0.8rem;color:var(--color-text-tertiary);margin-top:4px;">10:00 - 21:30</p>
+        </div>
+        <div class="store-card" data-stagger="4">
+          <h4><span class="store-pulse"></span>清水五權夜市</h4>
+          <p>台中市清水區</p>
+          <p style="font-size:0.8rem;color:var(--color-text-tertiary);margin-top:4px;">夜市營業時間</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:32px;" class="reveal">
+        <a href="pages/stores.html" class="link-arrow">
+          查看完整據點資訊 <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-brand-name font-english">Ha ShEN</div>
+        <p class="footer-brand-desc">
+          More than a drink — real ingredients, made with integrity. A little care in every cup.
+        </p>
+        <p class="footer-brand-desc" style="margin-top:12px;">
+          TAICHUNG, TAIWAN · Since 2016
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>品牌</h5>
+        <a href="pages/about.html">品牌故事</a>
+        <a href="pages/menu.html">菜單</a>
+        <a href="pages/stores.html">門市據點</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>服務</h5>
+        <a href="pages/order.html">線上點餐</a>
+        <a href="pages/franchise.html">加盟資訊</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h5>社群</h5>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/people/%E5%96%9D%E7%A5%9E%E6%89%8B%E4%BD%9C%E8%8C%B6%E9%A3%B2_%E7%B8%BD%E9%83%A8/61552195955684/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LINE">LINE</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2016-2026 信展有限公司 Ha ShEN. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="回到頂部">↑</button>
+
+  <!-- Hero Background Style -->
+  <style>
+    .hero-bg-gradient {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, #2C2420 0%, #3d2e24 40%, #4a3728 60%, #2C2420 100%);
+      animation: kenBurns 20s ease-in-out infinite alternate;
+    }
+
+    /* Scroll Indicator */
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.3; transform: scaleY(0.6); }
+    }
+  </style>
+
+  <!-- Scripts -->
+  <script src="js/splash.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

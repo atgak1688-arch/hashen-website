@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" fill="none">
+  <!-- 喝神手作茶飲 Ha ShEN — Calligraphy Logo SVG -->
+  <!-- Each stroke is a filled bezier path simulating brush calligraphy -->
+
+  <!-- ========== 「喝」 Character ========== -->
+
+  <!-- 口 radical (left side mouth) -->
+  <!-- Stroke 1: 口 left vertical -->
+  <path class="stroke" d="M 42 38 Q 40 36 38 38 L 36 42 Q 34 48 34 55 L 33 90 Q 33 95 36 97 Q 39 99 42 96 L 43 55 Q 43 45 42 38 Z" fill="currentColor"/>
+  <!-- Stroke 2: 口 top horizontal -->
+  <path class="stroke" d="M 38 36 Q 36 33 40 31 L 60 28 Q 72 26 82 28 Q 86 29 85 33 Q 84 37 80 37 L 55 38 Q 45 38 38 36 Z" fill="currentColor"/>
+  <!-- Stroke 3: 口 right vertical -->
+  <path class="stroke" d="M 82 30 Q 85 28 87 32 L 88 55 Q 89 75 88 90 Q 87 96 84 97 Q 81 98 80 94 L 80 55 Q 80 40 82 30 Z" fill="currentColor"/>
+  <!-- Stroke 4: 口 bottom horizontal -->
+  <path class="stroke" d="M 34 93 Q 32 90 36 88 L 55 87 Q 70 86 82 88 Q 87 89 86 93 Q 85 97 80 97 L 55 98 Q 42 98 34 93 Z" fill="currentColor"/>
+
+  <!-- 曷 right part top section -->
+  <!-- Stroke 5: top horizontal of 日 -->
+  <path class="stroke" d="M 105 22 Q 102 18 108 16 L 145 13 Q 170 11 190 14 Q 196 16 194 21 Q 192 25 186 24 L 145 22 Q 125 21 105 22 Z" fill="currentColor"/>
+  <!-- Stroke 6: 日 left vertical -->
+  <path class="stroke" d="M 108 17 Q 106 14 104 18 L 102 45 Q 101 65 102 80 Q 103 86 106 85 Q 109 84 109 80 L 110 45 Q 110 28 108 17 Z" fill="currentColor"/>
+  <!-- Stroke 7: 日 right vertical -->
+  <path class="stroke" d="M 190 15 Q 193 13 195 18 L 196 45 Q 197 65 196 82 Q 195 87 192 86 Q 189 85 189 80 L 188 45 Q 188 28 190 15 Z" fill="currentColor"/>
+  <!-- Stroke 8: 日 middle horizontal -->
+  <path class="stroke" d="M 104 48 Q 102 45 108 44 L 145 43 Q 170 42 188 44 Q 193 45 191 49 Q 189 52 185 51 L 145 50 Q 125 49 104 48 Z" fill="currentColor"/>
+  <!-- Stroke 9: 日 bottom horizontal -->
+  <path class="stroke" d="M 102 81 Q 100 78 106 77 L 145 76 Q 170 75 192 77 Q 197 78 195 82 Q 193 86 188 85 L 145 84 Q 125 83 102 81 Z" fill="currentColor"/>
+
+  <!-- 勹 wrap + inner strokes -->
+  <!-- Stroke 10: left-falling stroke -->
+  <path class="stroke" d="M 108 82 Q 105 80 104 84 L 95 110 Q 88 130 80 145 Q 76 152 72 150 Q 69 147 74 140 L 90 115 Q 100 95 108 82 Z" fill="currentColor"/>
+  <!-- Stroke 11: bottom horizontal -->
+  <path class="stroke" d="M 82 142 Q 78 138 85 136 L 130 132 Q 160 130 185 133 Q 192 135 190 140 Q 188 144 182 143 L 130 140 Q 105 139 82 142 Z" fill="currentColor"/>
+  <!-- Stroke 12: inner tick / dot -->
+  <path class="stroke" d="M 140 95 Q 136 90 140 88 L 152 92 Q 158 96 156 102 Q 154 108 148 108 Q 142 106 140 100 Z" fill="currentColor"/>
+  <!-- Stroke 13: right-falling of 匕 -->
+  <path class="stroke" d="M 155 96 Q 158 92 162 96 L 178 120 Q 188 138 195 152 Q 198 158 194 160 Q 190 161 186 155 L 170 130 Q 162 115 155 96 Z" fill="currentColor"/>
+
+  <!-- ========== 「神」 Character ========== -->
+
+  <!-- 示 radical (left side) -->
+  <!-- Stroke 14: top dot -->
+  <path class="stroke" d="M 52 195 Q 48 190 52 187 L 62 185 Q 70 184 72 190 Q 74 196 68 200 Q 62 203 55 200 Q 50 198 52 195 Z" fill="currentColor"/>
+  <!-- Stroke 15: horizontal bar -->
+  <path class="stroke" d="M 22 215 Q 18 211 24 209 L 55 207 Q 75 206 92 208 Q 98 210 96 215 Q 94 219 88 218 L 55 216 Q 38 215 22 215 Z" fill="currentColor"/>
+  <!-- Stroke 16: center vertical (long, main stroke with power) -->
+  <path class="stroke" d="M 56 210 Q 53 206 55 210 L 54 260 Q 53 310 52 360 Q 51 390 50 420 Q 49 430 46 432 Q 42 434 42 428 L 44 360 Q 46 300 48 250 Q 50 225 56 210 Z" fill="currentColor"/>
+  <!-- Stroke 17: left-falling slash -->
+  <path class="stroke" d="M 50 258 Q 47 254 44 258 L 28 285 Q 18 305 12 318 Q 8 326 12 328 Q 16 329 20 322 L 38 295 Q 46 275 50 258 Z" fill="currentColor"/>
+  <!-- Stroke 18: right-falling slash -->
+  <path class="stroke" d="M 52 260 Q 55 256 58 260 L 76 290 Q 86 310 92 325 Q 96 333 92 335 Q 88 336 84 328 L 68 298 Q 58 278 52 260 Z" fill="currentColor"/>
+
+  <!-- 申 (right part) -->
+  <!-- Stroke 19: center vertical (long powerful stroke through 申) -->
+  <path class="stroke" d="M 172 178 Q 169 172 171 176 L 170 250 Q 169 320 168 390 Q 167 430 166 460 Q 165 470 162 472 Q 158 474 158 468 L 160 390 Q 162 310 164 240 Q 166 200 172 178 Z" fill="currentColor"/>
+  <!-- Stroke 20: 申 top horizontal -->
+  <path class="stroke" d="M 118 210 Q 114 206 120 204 L 155 201 Q 180 200 210 202 Q 218 204 216 209 Q 214 214 208 212 L 160 209 Q 138 208 118 210 Z" fill="currentColor"/>
+  <!-- Stroke 21: 申 left vertical -->
+  <path class="stroke" d="M 120 205 Q 118 201 116 206 L 114 265 Q 113 320 114 375 Q 115 382 118 381 Q 121 380 121 375 L 122 310 Q 122 255 120 205 Z" fill="currentColor"/>
+  <!-- Stroke 22: 申 right vertical -->
+  <path class="stroke" d="M 214 204 Q 217 200 219 206 L 220 265 Q 221 320 220 375 Q 219 382 216 381 Q 213 380 213 375 L 212 310 Q 212 255 214 204 Z" fill="currentColor"/>
+  <!-- Stroke 23: 申 middle horizontal -->
+  <path class="stroke" d="M 115 288 Q 112 284 118 282 L 160 280 Q 190 279 218 281 Q 224 283 222 288 Q 220 292 214 290 L 160 288 Q 138 287 115 288 Z" fill="currentColor"/>
+  <!-- Stroke 24: 申 lower horizontal -->
+  <path class="stroke" d="M 114 345 Q 111 341 117 339 L 160 337 Q 190 336 218 338 Q 224 340 222 345 Q 220 349 214 347 L 160 345 Q 138 344 114 345 Z" fill="currentColor"/>
+  <!-- Stroke 25: 申 bottom horizontal -->
+  <path class="stroke" d="M 113 373 Q 110 369 116 367 L 160 365 Q 190 364 220 367 Q 226 369 224 374 Q 222 378 216 376 L 160 374 Q 138 373 113 373 Z" fill="currentColor"/>
+</svg>

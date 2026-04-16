@@ -70,9 +70,13 @@
 
   <!-- ========== HERO SECTION ========== -->
   <section class="hero" id="hero">
-    <!-- Background: gradient overlay simulating video bg -->
-    <div class="hero-bg-gradient"></div>
+    <!-- Layer 1: Brand image background -->
+    <img src="assets/images/brand-hero.jpg" alt="" class="hero-bg-image" aria-hidden="true">
+    <!-- Layer 2: Dark overlay + texture -->
     <div class="hero-overlay"></div>
+    <div class="hero-texture"></div>
+    <!-- Layer 3: Bottom fade to next section -->
+    <div class="hero-bottom-fade"></div>
 
     <div class="hero-content">
       <!-- Calligraphy Logo -->
@@ -336,11 +340,62 @@
 
   <!-- Hero Background Style -->
   <style>
-    .hero-bg-gradient {
+    /* Layer 1: Brand image — fills hero, slow zoom */
+    .hero-bg-image {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(135deg, #2C2420 0%, #3d2e24 40%, #4a3728 60%, #2C2420 100%);
-      animation: kenBurns 20s ease-in-out infinite alternate;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      animation: heroZoom 25s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes heroZoom {
+      0%   { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    /* Layer 2: Dark overlay — makes text readable */
+    .hero .hero-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(44, 36, 32, 0.55) 0%,
+        rgba(44, 36, 32, 0.45) 40%,
+        rgba(44, 36, 32, 0.65) 100%
+      );
+      z-index: 1;
+    }
+
+    /* Layer 2b: Subtle ink/paper texture overlay */
+    .hero-texture {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(232, 105, 45, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(197, 164, 103, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(44, 36, 32, 0.15) 0%, transparent 60%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Layer 3: Bottom gradient fade to next section */
+    .hero-bottom-fade {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 180px;
+      background: linear-gradient(
+        0deg,
+        var(--color-bg-primary) 0%,
+        rgba(250, 248, 245, 0.6) 30%,
+        transparent 100%
+      );
+      z-index: 2;
+      pointer-events: none;
     }
 
     /* Scroll Indicator */

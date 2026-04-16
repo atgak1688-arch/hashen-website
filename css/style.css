@@ -899,20 +899,27 @@ h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
 
 .drink-card-image {
   position: relative;
-  height: 220px;
+  height: 240px;
   overflow: hidden;
-  background: var(--color-bg-secondary);
+  background: linear-gradient(180deg, #f5f2ee 0%, #ebe6df 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
 .drink-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   transition: transform 0.6s var(--ease-smooth);
+  filter: drop-shadow(0 4px 12px rgba(44, 36, 32, 0.12));
 }
 
 .drink-card:hover .drink-card-image img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .drink-card-info {
@@ -1473,7 +1480,8 @@ h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
   }
 
   .drink-card-image {
-    height: 140px;
+    height: 160px;
+    padding: 14px;
   }
 
   .drink-card-info {

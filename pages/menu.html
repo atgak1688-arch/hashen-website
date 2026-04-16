@@ -164,12 +164,29 @@
     }
 
     .menu-card-image {
-      height: 180px;
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--color-text-tertiary);
       font-size: 0.8rem;
+      background: linear-gradient(180deg, #f5f2ee 0%, #ebe6df 100%);
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .menu-card-image img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(44, 36, 32, 0.12));
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .menu-card:hover .menu-card-image img {
+      transform: scale(1.06);
     }
 
     .menu-card-info {
@@ -270,7 +287,8 @@
       }
 
       .menu-card-image {
-        height: 140px;
+        height: 150px;
+        padding: 12px;
       }
     }
 

@@ -397,16 +397,13 @@ h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
   gap: 12px;
 }
 
+/* --- Navbar: transparent state (over Hero, text = white) --- */
 .nav-logo-calligraphy {
   font-family: 'Ma Shan Zheng', 'Liu Jian Mao Cao', cursive;
   font-size: 1.8rem;
   line-height: 1;
-  color: var(--color-text-primary);
-  transition: font-size 0.4s var(--ease-smooth);
-}
-
-.navbar.scrolled .nav-logo-calligraphy {
-  font-size: 1.5rem;
+  color: var(--color-text-inverse);
+  transition: font-size 0.4s var(--ease-smooth), color 0.4s var(--ease-smooth);
 }
 
 .nav-logo-text {
@@ -414,6 +411,17 @@ h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.1em;
+  color: var(--color-text-inverse);
+  transition: color 0.4s var(--ease-smooth);
+}
+
+/* --- Navbar: scrolled state (glass bg, text = dark) --- */
+.navbar.scrolled .nav-logo-calligraphy {
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+}
+
+.navbar.scrolled .nav-logo-text {
   color: var(--color-text-primary);
 }
 
@@ -423,14 +431,15 @@ h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
   gap: clamp(20px, 3vw, 40px);
 }
 
+/* Transparent state: white text */
 .nav-link {
   font-family: var(--font-heading);
   font-size: 0.9rem;
   font-weight: 400;
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.8);
   position: relative;
   padding: 4px 0;
-  transition: color var(--duration-fast) var(--ease-smooth);
+  transition: color 0.4s var(--ease-smooth);
 }
 
 .nav-link::after {
@@ -445,7 +454,7 @@ h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
 }
 
 .nav-link:hover {
-  color: var(--color-text-primary);
+  color: #fff;
 }
 
 .nav-link:hover::after {
@@ -453,11 +462,24 @@ h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
 }
 
 .nav-link.active {
-  color: var(--color-brand);
+  color: var(--color-brand-light);
 }
 
 .nav-link.active::after {
   width: 100%;
+}
+
+/* Scrolled state: dark text */
+.navbar.scrolled .nav-link {
+  color: var(--color-text-secondary);
+}
+
+.navbar.scrolled .nav-link:hover {
+  color: var(--color-text-primary);
+}
+
+.navbar.scrolled .nav-link.active {
+  color: var(--color-brand);
 }
 
 .nav-order-btn {
@@ -510,9 +532,13 @@ h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--color-text-primary);
+  background: var(--color-text-inverse);
   transition: all 0.3s var(--ease-smooth);
   border-radius: 2px;
+}
+
+.navbar.scrolled .nav-toggle span {
+  background: var(--color-text-primary);
 }
 
 /* --- Section Common --- */
